@@ -1,0 +1,17 @@
+{% extends "nws_viewer/base.html" %}
+
+{% load tethys_gizmos %}
+
+{% block app_content %}
+	<div class="col-md-12">
+    {% gizmo "map_view" map_view_options %}
+  </div>
+{% endblock %}
+
+{% block app_navigation_items %}
+  <li class="active"><a href="">Home</a></li>
+{% endblock %}
+
+{% block app_actions %}
+  <a href="" class="btn btn-default">Next</a>
+{% endblock %}
