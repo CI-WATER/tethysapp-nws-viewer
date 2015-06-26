@@ -95,6 +95,11 @@ function animationLoop (layers, timeStep, loop) {
     // set first layer to
     activeLayer.setVisible(true);
     
+    if(!play) {
+      activeLayer.setVisible(false);
+      return;
+    }
+
     // if statement 
     if (i < arrayLength - 1) {
       i++;
@@ -118,7 +123,8 @@ var layerArray = [hazardsLayer, gaugesLayer, floodLayer, precipLayer];
 
 // Add animation loop function to "Start Animation" button when clicked
 $('#animateBtn button').click(function() {
-  animationLoop(layerArray, 2000, true);
+  play = true;
+  animationLoop(layerArray, 500, true);
 })
 
 // Click event for the stop animation button
