@@ -1,0 +1,27 @@
+#app-content-wrapper.show-nav #app-content {
+    padding-right: 0;
+    -webkit-transform: none;
+       -moz-transform: none;
+        -ms-transform: none;
+         -o-transform: none;
+}
+
+#animateBtn {
+	padding-top: 20px;
+}
+
+#animateBtn button {
+	width: 200px;
+	height: 50px;
+	font-size: large;
+}
+
+#stopAnimation {
+	padding-top: 20px;
+}
+
+#stopAnimation button {
+	width: 200px;
+	height: 50px;
+	font-size: large;
+}
