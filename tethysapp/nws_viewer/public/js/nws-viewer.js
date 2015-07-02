@@ -116,6 +116,7 @@ function animationLoop (layers, timeStep, loop) {
 // Add animation with the time steps I specify
 $(document).ready(function() {
   addLayers();
+  $('.alert').hide();
 });
 
 // define the layer array for the map
@@ -123,11 +124,16 @@ var layerArray = [hazardsLayer, gaugesLayer, floodLayer, precipLayer];
 
 // Add animation loop function to "Start Animation" button when clicked
 $('#animateBtn button').click(function() {
-  play = true;
-  animationLoop(layerArray, 500, true);
-})
+  var timeStep = $('#time').val();
+  if (timeStep !== "") {
+    play = true;
+    animationLoop(layerArray, timeStep * 1000, true);
+  } else{
+    $('.alert').show();
+  };
+});
 
 // Click event for the stop animation button
 $('#stopAnimation button').click(function() {
   play = false;
-})
+});
