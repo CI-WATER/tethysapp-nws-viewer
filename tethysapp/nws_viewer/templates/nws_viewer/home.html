@@ -7,18 +7,21 @@
 		<div class="col-md-2">
 			<br>
 			<!-- Alert box for animation time step -->
-			<div class="alert alert-warning alert-dismissible" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<div class="alert alert-warning alert-dismissible" id="timeStepAlert" role="alert" hidden="hidden">
+				<button type="button" class="close" data-hide="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<strong>Warning!</strong> <br>Enter something for the timestep for the animation to start
 			</div>
 
 			<!-- Text input for animation -->
 			<label>Enter Time Step for Animation (seconds)</label>
-			<div id="timeStep"><input type="text" placeholder="Time Step" id="time" class="form-control"></div>
+			<div id="timeStep"><input type="text" placeholder="Time Step" id="timeInc" class="form-control"></div>
+			<br>
+
+			<!-- Time Slider for Animation Time Step -->
+			{% gizmo range_slider timeStepSlider %}
 
 			<!-- Animation start and stop buttons -->
 			<div id="animateBtn"><button type="button" class="btn btn-primary">Start Animation</button></div>
-			<br>
 			<div id="stopAnimation"><button type="button" class="btn btn-danger">Stop Animation</button></div>
 		</div>
 		<div class="col-md-10">

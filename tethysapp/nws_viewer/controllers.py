@@ -1,11 +1,21 @@
 from django.shortcuts import render
 from tethys_gizmos.gizmo_options import MVLegendClass, MVLayer, MapView, MVDraw, MVView
+from tethys_apps.sdk.gizmos import RangeSlider
 
 
 def home(request):
     """
     Controller for the app home page.
     """   
+
+    # Slider for time step animation
+    timeStepSlider = RangeSlider(display_text='Slide to change animation time step',
+      name='timeStepSlider',
+      min=0,
+      max=10,
+      initial=2,
+      step=0.5
+    )
 
     # Define view options for the map
     view_options = MVView(
@@ -28,6 +38,6 @@ def home(request):
       legend=True
     )
 
-    context = {'map_view_options': map_view_options}
+    context = {'map_view_options': map_view_options, 'timeStepSlider': timeStepSlider}
 
     return render(request, 'nws_viewer/home.html', context)

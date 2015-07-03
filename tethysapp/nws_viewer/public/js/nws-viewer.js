@@ -70,6 +70,7 @@ function animateLayersOn(layer, time) {
   return setInterval(function() {turnOnLayer(layer)}, time);
 }
 
+// function to animate the different layers
 function animationLoop (layers, timeStep, loop) {
   loop = typeof loop !== 'undefined' ? loop : false;
 
@@ -116,20 +117,26 @@ function animationLoop (layers, timeStep, loop) {
 // Add animation with the time steps I specify
 $(document).ready(function() {
   addLayers();
-  $('.alert').hide();
 });
 
 // define the layer array for the map
 var layerArray = [hazardsLayer, gaugesLayer, floodLayer, precipLayer];
 
+// function to hide the dismiss box when the 'x' is clicked
+$(function(){
+    $("[data-hide]").on("click", function(){
+        $(this).closest("." + $(this).attr("data-hide")).hide();
+    });
+});
+
 // Add animation loop function to "Start Animation" button when clicked
 $('#animateBtn button').click(function() {
-  var timeStep = $('#time').val();
+  var timeStep = $('#timeInc').val();
   if (timeStep !== "") {
     play = true;
     animationLoop(layerArray, timeStep * 1000, true);
   } else{
-    $('.alert').show();
+    $('#timeStepAlert').show();
   };
 });
 
@@ -137,3 +144,18 @@ $('#animateBtn button').click(function() {
 $('#stopAnimation button').click(function() {
   play = false;
 });
+
+// On Change event for slider
+$("input[type='range']").on('change', function() {
+  // find the value of the slider
+  var timeSliderVal = $('#timeStepSlider').val();
+  console.log(timeSliderVal);
+  if (timeSliderVal !== "") {
+    play = true;
+    animationLoop(layerArray, timeSliderVal * 1000, true);
+  } else {
+    $('timeStepAlert').show();
+  };
+});
+
+
